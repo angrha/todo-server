@@ -30,6 +30,10 @@ const userSchema = new Schema({
     enum: ['admin', 'user'],
     default: 'user'
   }
+  // todolist: [{
+  //   type: Schema.Types.ObjectId,
+  //   ref: 'Todo'
+  // }]
 })
 
 userSchema.pre('save', function(next) {

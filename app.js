@@ -12,6 +12,7 @@ mongoose.connect('mongodb://localhost/todomongo'); //connect to database
 
 const index = require('./routes/index');
 const users = require('./routes/users');
+const todo = require('./routes/todos');
 
 const app = express();
 app.use(cors())
@@ -26,6 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/api/users', users);
+app.use('/api/todos', todo)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
