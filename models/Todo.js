@@ -6,11 +6,15 @@ let todoSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'User'
   },
-  title: String,
+  title: {
+    type: String,
+    default: ''
+  },
+  todos: String,
   status: {
     type: String,
-    enum: ['uncomplete', 'completed'],
-    default: 'uncomplete'
+    enum: ['uncompleted', 'completed'],
+    default: 'uncompleted'
   }
 },{
   timestamps: true

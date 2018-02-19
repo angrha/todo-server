@@ -8,7 +8,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 require('dotenv').config()
 
-mongoose.connect('mongodb://localhost/todomongo'); //connect to database
+mongoose.connect(`mongodb://${process.env.DB_USER}:${process.env.DB_PASS}@ds239988.mlab.com:39988/todo-fancy`); //connect to database
 
 const index = require('./routes/index');
 const users = require('./routes/users');
