@@ -20,7 +20,7 @@ class TodoController {
   static findUserTodo(req, res) {
     Todo.findOne({
       _id: req.params.id,
-      // author: req.decoded.id
+      _id: req.decoded.id
     })
       .populate('author', 'username')
       .then(userTodo => {
@@ -38,7 +38,7 @@ class TodoController {
   // create todo-list
   static create(req, res) {
     let todo = new Todo({
-      // author: req.decoded.id,
+      author: req.decoded.id,
       todos: req.body.todos
     })
 
@@ -59,7 +59,7 @@ class TodoController {
   static update(req, res) {
     Todo.findOne({
       _id: req.params.id,
-      // author: req.decoded.id
+      author: req.decoded.id
     })
       .then(todo => {
         todo.todos = req.body.todos || todo.todos
@@ -84,7 +84,7 @@ class TodoController {
   static delete(req, res) {
     Todo.remove({
       _id: req.params.id,
-      // author: req.decoded.id
+      author: req.decoded.id
     })
       .then(() => {
         res.status(200).json({
@@ -102,7 +102,7 @@ class TodoController {
   static mark(req, res) {
     Todo.findOne({
       _id: req.params.id,
-      // author: req.decoded.id
+      author: req.decoded.id
     })
       .then(todo => {
         todo.status = req.body.status || todo.status,

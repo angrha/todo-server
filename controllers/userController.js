@@ -20,7 +20,7 @@ class UserController {
     let objUser = {
       username: req.body.username,
       email: req.body.email,
-      password: bcrypt.hashSync(req.body.password, salt),
+      password: req.body.password,
       status: req.body.status || 'user'
     }
 
@@ -36,7 +36,7 @@ class UserController {
   }
 
   static getUserProfile(req, res) {
-    User.findById(req.params.id)
+    User.findById(req.decoded.id)
       .then(user => {
         if (!user) {
           return res.status(400).json({
@@ -45,7 +45,8 @@ class UserController {
         }
         res.status(200).json({
           msg: 'find one user',
-          user: user
+          userId: user._id,
+          username: user.username
         })
         .catch(err => {
           res.status(500).send(err)
@@ -97,7 +98,7 @@ class UserController {
     let objUser = {
       username: req.body.username,
       email: req.body.email,
-      password: bcrypt.hashSync(req.body.password, salt)
+      password: req.body.password
     }
 
     let user = new User(objUser)
@@ -140,7 +141,8 @@ class UserController {
         if(!err) {
           res.status(200).json({
             message : 'authentication valid!',
-            userId  : user._id,
+            userId: user._id,
+            username : user.username,
             token   : token
           })
         }
