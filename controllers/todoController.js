@@ -51,6 +51,7 @@ class TodoController {
         })
       })
       .catch(err => {
+        console.log(err)
         res.status(500).send(err)
       })
   }
@@ -72,10 +73,12 @@ class TodoController {
             })
           })
           .catch(err =>{
+            console.log(err)
             res.status(500).send(err)
           })
       })
       .catch( err =>{
+        console.log(err)
         res.status(500).send(err)
       })
   }

@@ -13,7 +13,10 @@ class UserController {
         user: users
       })
     })
-    .catch(err => res.status(500).send(err))
+    .catch(err => {
+      console.log(err)
+      res.status(500).send(err)
+    })
   }
 
   static createUser(req, res){
@@ -49,6 +52,7 @@ class UserController {
           username: user.username
         })
         .catch(err => {
+          console.log(err)
           res.status(500).send(err)
         })
       })

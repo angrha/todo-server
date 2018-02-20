@@ -7,7 +7,7 @@ const isSelf  = require('../helper/authOwnOrAdm')
 
 router.get('/', isLogin, isAdmin, User.findAll)
 router.post('/', isLogin, isAdmin, User.createUser)
-router.get('/user', isLogin, isSelf, User.getUserProfile)
+router.get('/user', isLogin, User.getUserProfile)
 router.put('/:id', isLogin, isSelf, User.updateUser)
 router.delete('/:id', isLogin, isSelf, User.deleteUser)
 router.post('/signup', User.register)
