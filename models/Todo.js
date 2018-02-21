@@ -8,7 +8,7 @@ let todoSchema = new Schema({
   },
   title: {
     type: String,
-    default: ''
+    default: 'dblclick to edit title'
   },
   todos: String,
   status: {

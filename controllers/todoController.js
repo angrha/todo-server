@@ -18,11 +18,10 @@ class TodoController {
 
   // find specific todo-list
   static findUserTodo(req, res) {
-    Todo.findOne({
-      _id: req.params.id,
-      _id: req.decoded.id
+    console.log(req.params.id, 'ini ctrl')
+    Todo.find({
+      author: req.params.id
     })
-      .populate('author', 'username')
       .then(userTodo => {
         res.status(200).json({
           message : 'your todo-list',
@@ -63,6 +62,7 @@ class TodoController {
       author: req.decoded.id
     })
       .then(todo => {
+        todo.title = req.body.title || todo.title
         todo.todos = req.body.todos || todo.todos
 
         todo.save()
