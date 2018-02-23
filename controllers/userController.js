@@ -124,13 +124,13 @@ class UserController {
     .then(user => {
       if(!user) {
         res.status(403).json({
-          message: 'username not found'
+          message: 'email or username not found'
         })
       }
 
       if(!bcrypt.compareSync(req.body.password, user.password)) {
         res.status(403).json({ 
-          message: 'invalid username or password'
+          message: 'invalid email or password'
         })
       }
 

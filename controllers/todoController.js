@@ -2,7 +2,9 @@ const Todo = require('../models/Todo')
 
 class TodoController {
   static findAll(req, res) {
-    Todo.find()
+    Todo.find({
+      author: req.decoded.id
+    })
       .populate('author', ['_id', 'username', 'email'])
       .then(todos => {
         res.status(200).json({
